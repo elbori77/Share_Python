@@ -1,0 +1,96 @@
+###Yes or no dialog box
+##from tkinter import *
+##
+##class Window(Frame):
+##
+##
+##    def __init__(self, master=None):
+##        Frame.__init__(self, master)                 
+##        self.master = master
+##        self.init_window()
+##
+##    #Creation of init_window
+##    def init_window(self):
+##        # Label question
+##        message = Label(self, text='Hello Carlos! Are you ready to work?',
+##                        bg='white')
+##        message.pack()
+##        message.place(x=50, y=50)
+##        # changing the title of our master widget      
+##        self.master.title('Ready to Work')
+##
+##        # allowing the widget to take the full space of the root window
+##        self.pack(fill=BOTH, expand=1)
+##
+##            # creating a button instance
+##        okButton = Button(self, text='Yes', height=1, width=5, command=self.ready)
+##        quitButton = Button(self, text='No', height=1, width=5,
+##                            command=self.client_exit)
+##
+##        # placing the button on my window
+##        okButton.place(x=100, y=100)
+##        quitButton.place(x=150, y=100)
+##
+##    def client_exit(self):
+##        exit()
+##    def ready(self):
+##        print('It works!')
+##    
+##root = Tk()
+##
+###size of the window
+##root.geometry('300x150')
+##
+##app = Window(root)
+##root.mainloop() 
+
+
+
+
+###Sorting example
+##countries = [
+##    ('China', 1379000000, 3700000),
+##    ('Rusia', 144300000, 6612100),
+##    ('Mexico', 127500000, 760000)   
+##    ]
+##size = lambda country: country[2]
+##countries.sort(key=size, reverse=True)
+##print(countries)
+##
+##population = lambda country: country[1]
+##countries.sort(key=population, reverse=True)
+##print(countries)
+
+###Lambda function example
+##full_name = lambda fn, ln: fn.strip().title() + ' ' + ln.strip().title()
+##print(full_name(' carlos', 'principe'))
+
+
+##input_list = [1, 5, 10, 15, 4, 25, 50, 7]
+##
+##def div_by_five(num):
+##    if num % 5 == 0:
+##        return True
+##    else:
+##        return False
+##
+##xyz = (i for i in input_list if div_by_five(i))
+##[print(i) for i in xyz]
+
+
+###string formatting
+##who = 'Manny'
+##how_many = 10
+##when = 'today'
+##
+##print('{} ate {} apples {}!'.format(who, how_many, when)) 
+
+###List comprehension and generator
+##import timeit 
+###comprehension
+##xyz = [i for i in range(5000000)]
+##print('Done in ' + str(timeit.default_timer()))
+###generator
+##xyz = (i for i in range(5000000))
+##print('Done in ' + str(timeit.default_timer()))
+  
