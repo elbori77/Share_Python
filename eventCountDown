@@ -1,6 +1,8 @@
 from tkinter import Tk ,Canvas
 from datetime import date, datetime
 
+#This program will make an event countdown
+
 #Read the text file
 def get_events():
     list_events = []
@@ -20,11 +22,13 @@ def days_between_dates(date1, date2):
     return number_of_days[0]
     
 #Create canvas
-root = Tk() #Create a Tkinter window
+root = Tk()  #Create a Tkinter window
 
-c = Canvas(root, width=650, height=400, bg='black') #Create a canvas called c
+c = Canvas(root, width=650, height=400, bg='black')  #Create a canvas called c
 
-c.pack() #packs the canvas into the Tkinter window.
+c.master.title('Event Countdown Calendar')  #Canvas title
+
+c.pack()  #packs the canvas into the Tkinter window.
 
 c.create_text(100, 50, anchor='w', fill='orange', \
                 font='Arial 28 bold underline', text='My Countdown Calendar')
@@ -44,4 +48,3 @@ for event in events:
                   font='Arial 18 bold', text=display)
 
     vertical_space = vertical_space + 30
-
