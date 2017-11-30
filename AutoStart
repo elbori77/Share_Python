@@ -1,0 +1,72 @@
+import webbrowser
+import os
+import subprocess
+from time import sleep
+from tkinter import *
+
+'''Program to auto-start my workstation'''
+class Window(Frame):
+
+
+    def __init__(self, master=None):
+        Frame.__init__(self, master)                 
+        self.master = master
+        self.init_window()
+
+    # Creation of init_window
+    def init_window(self):
+        # Label question
+        message = Label(self, text='Hello are you ready to work?',
+                        bg='white')
+        message.pack()
+        message.place(x=50, y=50)
+        # changing the title of our master widget      
+        self.master.title('Ready to Work')
+
+        # allowing the widget to take the full space of the root window
+        self.pack(fill=BOTH, expand=1)
+
+            # creating a button instance
+        okButton = Button(self, text='Yes', height=1, width=5,
+                          command=self.autoStart)
+        quitButton = Button(self, text='No', height=1, width=5,
+                            command=self.client_exit)
+
+        # placing the button on my window
+        okButton.place(x=100, y=100)
+        quitButton.place(x=150, y=100)
+
+    def client_exit(self):
+        exit()
+
+    def autoStart(self):
+        # links to open
+        i = 0
+        links = []
+        with open('Links.txt') as file:  # grab links from text file 
+            for line in file:
+                line = line.rstrip("\n")
+                links.append(line)
+                webbrowser.get().open(links[i], new=2, autoraise=True)
+                i+=1
+            if i == len(links):
+                break
+        sleep(3)
+
+        # open programs & files
+        # program 1
+        os.chdir(r"C:\Path\to\program\folder")
+        subprocess.Popen([r"C:\Path\to\program\folder\program.exe"])
+        # program 2
+        os.chdir(r"C:\Path\to\program\folder")
+        subprocess.Popen([r"C:\Path\to\program\folder\program.exe"])
+        # program 3
+        os.chdir(r"C:\Path\to\program\folder")
+        subprocess.Popen([r"C:\Path\to\program\folder\program.exe"])
+
+    
+root = Tk()
+root.geometry('300x150')   
+
+app = Window(root)
+root.mainloop()
