@@ -1,0 +1,22 @@
+class Cars:
+
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        
+    def carInfo(self):
+        return 'Brand: ' '{}, ' 'Model: ' '{}, ' 'Year: ' '{}'.format (self.brand, self.model, self.year)   
+        
+car1 = Cars('Mazda', 323, 1990)
+car2 = Cars ('Honda', 'Accord', 1998)
+ 
+print (car1.brand)
+print (car1.model)
+print (car1.year)    
+print (car1.carInfo())
+print ('\n')
+print (car2.brand)
+print (car2.model)
+print (car2.year)
+print (car2.carInfo())
