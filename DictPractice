@@ -1,0 +1,21 @@
+import pprint
+
+# dictionary practice
+message = '''(CNN) — On Sunday, stargazers, astronomers and curious sky-watchers will get a chance to witness the first and only supermoon of 2017.
+
+• Orbit variation means Sunday's moon is more than just super
+
+In November 2016, the moon reached a distance closest to the Earth than ever seen since 1948, producing a supersized supermoon. However, on Sunday night, the moon will still shine 16% brighter and appear 7% larger than its usual size.
+
+A supermoon occurs when the sun, moon and Earth align, and a full or new moon aligns with the sun's lunar orb. This supermoon will be the first in the series of three consecutive full moon supermoons, the next two to occur in January.
+
+• 'Supermoon' glows around the globes.'''
+
+count = {}
+
+for character in message.upper():
+    count.setdefault(character, 0)
+    count[character] = count[character] + 1
+
+pprint.pprint(count) # print character count
+print(len(message.replace(' ', ''))) # print all character count no white space
