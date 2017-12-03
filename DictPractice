@@ -17,5 +17,6 @@ for character in message.upper():
     count.setdefault(character, 0)
     count[character] = count[character] + 1
 
-pprint.pprint(count) # print character count
+pprint.pprint(count) # print count of each character
 print(len(message.replace(' ', ''))) # print all character count no white space
+print(len(message.split(' '))) # print word count 
