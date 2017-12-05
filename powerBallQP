@@ -1,0 +1,8 @@
+# powerball quick pick
+import random
+
+fiveNum = random.sample(range(70), 5)
+powerBall = random.randrange(1, 6)
+     
+print('White ball numbers: '+ ", ".join( repr(e) for e in fiveNum ))
+print('Power Ball number: ' + str(powerBall))
