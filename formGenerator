@@ -1,0 +1,284 @@
+import os
+import openpyxl
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+import datetime
+
+now = datetime.datetime.now()
+
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName('Dialog')
+        Dialog.resize(572, 510)
+        Dialog.setWindowIcon(QtGui.QIcon('favicon.ico'))
+        #PID
+        self.pid = QtWidgets.QLineEdit(Dialog)
+        self.pid.setGeometry(QtCore.QRect(50, 10, 81, 21))
+        self.pid.setObjectName('pid')
+        self.pid.setText('')
+        self.labelPid = QtWidgets.QLabel(Dialog)
+        self.labelPid.setGeometry(QtCore.QRect(30, 10, 21, 21))
+        self.labelPid.setObjectName('labelPid')
+        self.labelPid.setText('PID')
+        #Date
+        self.date = QtWidgets.QLineEdit(Dialog)
+        self.date.setGeometry(QtCore.QRect(180, 10, 81, 21))
+        self.date.setText(now.strftime('%m-%d-%Y'))
+        self.date.setObjectName('lineEdit_2')
+        self.labelDate = QtWidgets.QLabel(Dialog)
+        self.labelDate.setGeometry(QtCore.QRect(150, 10, 31, 21))
+        self.labelDate.setObjectName('labelDate')
+        self.labelDate.setText('Date')
+        #Cost
+        self.cost = QtWidgets.QLineEdit(Dialog)
+        self.cost.setGeometry(QtCore.QRect(300, 10, 81, 21))
+        self.cost.setObjectName('cost')
+        self.cost.setText('')
+        self.labelCost = QtWidgets.QLabel(Dialog)
+        self.labelCost.setGeometry(QtCore.QRect(270, 10, 31, 21))
+        self.labelCost.setObjectName('labelCost')
+        self.labelCost.setText('Cost')
+        #Passings
+        self.passings = QtWidgets.QLineEdit(Dialog)
+        self.passings.setGeometry(QtCore.QRect(440, 10, 81, 21))
+        self.passings.setObjectName('passings')
+        self.passings.setText('')
+        self.labelPassings = QtWidgets.QLabel(Dialog)
+        self.labelPassings.setGeometry(QtCore.QRect(390, 10, 43, 21))
+        self.labelPassings.setObjectName('labelPassings')
+        self.labelPassings.setText('Passings')
+        #ProjectName
+        self.ProjectName = QtWidgets.QLineEdit(Dialog)
+        self.ProjectName.setGeometry(QtCore.QRect(130, 40, 251, 20))
+        self.ProjectName.setObjectName('ProjectName')
+        self.ProjectName.setText('')
+        self.labelProjectName = QtWidgets.QLabel(Dialog)
+        self.labelProjectName.setGeometry(QtCore.QRect(10, 40, 80, 16))
+        self.labelProjectName.setObjectName('labelprojectName')
+        self.labelProjectName.setText('Project Name')
+        #Address
+        self.address = QtWidgets.QLineEdit(Dialog)
+        self.address.setGeometry(QtCore.QRect(130, 70, 150, 20))
+        self.address.setObjectName('address')
+        self.address.setText('')
+        self.labelAddress = QtWidgets.QLabel(Dialog)
+        self.labelAddress.setGeometry(QtCore.QRect(10, 70, 71, 16))
+        self.labelAddress.setObjectName('labelAddress')
+        self.labelAddress.setText('Address')
+        #City
+        self.city = QtWidgets.QLineEdit(Dialog)
+        self.city.setGeometry(QtCore.QRect(315, 70, 75, 20))
+        self.city.setObjectName('city')
+        self.city.setText('')
+        self.labelCity = QtWidgets.QLabel(Dialog)
+        self.labelCity.setGeometry(QtCore.QRect(290, 70, 41, 16))
+        self.labelCity.setObjectName('labelCity')
+        self.labelCity.setText('City')
+        #State
+        self.state = QtWidgets.QLineEdit(Dialog)
+        self.state.setGeometry(QtCore.QRect(430, 70, 41, 21))
+        self.state.setObjectName('state')
+        self.state.setText('NC')
+        self.labelState = QtWidgets.QLabel(Dialog)
+        self.labelState.setGeometry(QtCore.QRect(400, 70, 41, 21))
+        self.labelState.setObjectName('labelState')
+        self.labelState.setText('State')
+        #ZipCode
+        self.zipcode = QtWidgets.QLineEdit(Dialog)
+        self.zipcode.setGeometry(QtCore.QRect(500, 70, 61, 21))
+        self.zipcode.setObjectName('zipcode')
+        self.zipcode.setText('')
+        self.labelZipcode = QtWidgets.QLabel(Dialog)
+        self.labelZipcode.setGeometry(QtCore.QRect(480, 70, 41, 21))
+        self.labelZipcode.setObjectName('labelZipcode')
+        self.labelZipcode.setText('Zip')
+        #Manager
+        self.manager = QtWidgets.QLineEdit(Dialog)
+        self.manager.setGeometry(QtCore.QRect(130, 100, 251, 20))
+        self.manager.setObjectName('manager')
+        self.manager.setText('BOB BENNETT')
+        self.labelManager = QtWidgets.QLabel(Dialog)
+        self.labelManager.setGeometry(QtCore.QRect(10, 100, 71, 16))
+        self.labelManager.setObjectName('labelManager')
+        self.labelManager.setText('Manager')
+        #Supervisor
+        self.supervisor = QtWidgets.QLineEdit(Dialog)
+        self.supervisor.setGeometry(QtCore.QRect(130, 130, 251, 20))
+        self.supervisor.setObjectName('supervisor')
+        self.supervisor.setText('CYNTHIA MUSCIA')
+        self.labelSupervisor = QtWidgets.QLabel(Dialog)
+        self.labelSupervisor.setGeometry(QtCore.QRect(10, 130, 71, 16))
+        self.labelSupervisor.setObjectName('labelSupervisor')
+        self.labelSupervisor.setText('Supervisor')
+        #Customer Name
+        self.customer = QtWidgets.QLineEdit(Dialog)
+        self.customer.setGeometry(QtCore.QRect(130, 160, 251, 20))
+        self.customer.setObjectName('customer')
+        self.customer.setText('')
+        self.labelCustomer = QtWidgets.QLabel(Dialog)
+        self.labelCustomer.setGeometry(QtCore.QRect(10, 160, 91, 16))
+        self.labelCustomer.setObjectName('labelCustomer')
+        self.labelCustomer.setText('Customer')
+        #Customer Phone
+        self.custPh = QtWidgets.QLineEdit(Dialog)
+        self.custPh.setGeometry(QtCore.QRect(430, 160, 131, 21))
+        self.custPh.setObjectName('custPh')
+        self.custPh.setText('')
+        self.labelCustPh = QtWidgets.QLabel(Dialog)
+        self.labelCustPh.setGeometry(QtCore.QRect(390, 160, 35, 21))
+        self.labelCustPh.setObjectName('labelCustPh')
+        self.labelCustPh.setText('Phone')
+        #Coordinator
+        self.coordinator = QtWidgets.QLineEdit(Dialog)
+        self.coordinator.setGeometry(QtCore.QRect(130, 190, 251, 20))
+        self.coordinator.setObjectName('coordinator')
+        self.coordinator.setText('CARLOS PRINCIPE')
+        self.labelCoordinator = QtWidgets.QLabel(Dialog)
+        self.labelCoordinator.setGeometry(QtCore.QRect(10, 190, 81, 16))
+        self.labelCoordinator.setObjectName('labelCoordinator')
+        self.labelCoordinator.setText('Coordinator')
+        #Map Number
+        self.mapNum = QtWidgets.QLineEdit(Dialog)
+        self.mapNum.setGeometry(QtCore.QRect(130, 220, 251, 20))
+        self.mapNum.setObjectName('mapNum')
+        self.mapNum.setText('')
+        self.labelMapNum = QtWidgets.QLabel(Dialog)
+        self.labelMapNum.setGeometry(QtCore.QRect(10, 220, 90, 16))
+        self.labelMapNum.setObjectName('labelMapNum')
+        self.labelMapNum.setText('Map Number')
+        #Aerial Ft.
+        self.aerialFt = QtWidgets.QLineEdit(Dialog)
+        self.aerialFt.setGeometry(QtCore.QRect(430, 190, 41, 21))
+        self.aerialFt.setText('')
+        self.aerialFt.setObjectName('aerialFt')
+        self.labelAerialFt = QtWidgets.QLabel(Dialog)
+        self.labelAerialFt.setGeometry(QtCore.QRect(390, 190, 41, 21))
+        self.labelAerialFt.setObjectName('AerialFt')
+        self.labelAerialFt.setText('AE Ft.')
+        #Underground Ft.
+        self.ugFt = QtWidgets.QLineEdit(Dialog)
+        self.ugFt.setGeometry(QtCore.QRect(520, 190, 41, 21))
+        self.ugFt.setText('')
+        self.ugFt.setObjectName('ugFt')
+        self.labelUgFt = QtWidgets.QLabel(Dialog)
+        self.labelUgFt.setGeometry(QtCore.QRect(480, 190, 41, 21))
+        self.labelUgFt.setObjectName('UgFt')
+        self.labelUgFt.setText('UG Ft.')
+        #Comments
+        self.comments = QtWidgets.QPlainTextEdit(Dialog)
+        self.comments.setGeometry(QtCore.QRect(10, 270, 551, 101))
+        self.comments.setObjectName('comments')
+        self.comments.setPlainText('Build ----\' UG plant extension to service 1 passing.'
+                                   ' Doesn\'t meet ROI, cost share of $---- will be required.'
+                                   ' This is a private road. Resident is responsible for completing'
+                                   ' a Spectrum Easement Agreement for any lots crossed during construction,'
+                                   ' having them notarized and filed with the County Register of Deeds prior to any work taking place.')
+        self.labelComments = QtWidgets.QLabel(Dialog)
+        self.labelComments.setGeometry(QtCore.QRect(10, 250, 61, 16))
+        self.labelComments.setObjectName('labelComments')
+        self.labelComments.setText('Comments:')
+        #Escalation
+        self.escalation = QtWidgets.QPlainTextEdit(Dialog)
+        self.escalation.setGeometry(QtCore.QRect(10, 390, 551, 61))
+        self.escalation.setObjectName('escalation')
+        self.escalation.setPlainText('')
+        self.labelEscalation = QtWidgets.QLabel(Dialog)
+        self.labelEscalation.setGeometry(QtCore.QRect(10, 370, 141, 16))
+        self.labelEscalation.setObjectName('labelEscalation')
+        self.labelEscalation.setText('ROI Escalation Reason:')
+        #Button
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(460, 470, 75, 31))
+        self.pushButton.setObjectName('pushButton')
+        self.pushButton.clicked.connect(self.onClick)
+        
+
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        
+
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Form Generator"))
+        self.pushButton.setText(_translate("Dialog", "Submit"))
+       
+    def onClick(self):
+
+        os.chdir('c:\\Users\\P2180322\\Desktop')
+        PID = self.pid.text()
+        Date = self.date.text()
+        ProjectName = self.ProjectName.text()
+        Manager = self.manager.text()
+        Supervisor = self.supervisor.text()
+        Cost = self.cost.text()
+        Passings = self.passings.text()
+        Address = self.address.text()
+        City = self.city.text()
+        State = self.state.text()
+        Zipcode = self.zipcode.text()
+        Coordinator = self.coordinator.text()
+        Customer = self.customer.text()
+        CustPhone = self.custPh.text()
+        MapNumber = self.mapNum.text()
+        UgFt = self.ugFt.text()
+        AerialFt = self.aerialFt.text()
+        Comments = self.comments.toPlainText()
+        Escalation = self.escalation.toPlainText()
+
+        #Open ROI File
+        wb = openpyxl.load_workbook('ROI_blank.xlsm', keep_vba=True)
+        #Select sheet and assign values
+        sheet = wb['Serviceability (up to 3 cust)']  
+        sheet['E5'].value = PID
+        sheet['I4'].value = Date
+        sheet['C26'].value = int(Cost)
+        sheet['C31'].value = int(Passings)
+        sheet['E4'].value = ProjectName
+        sheet['E20'].value = Address
+        sheet['E6'].value = City + ',' + ' ' + State
+        sheet['F20'].value = City
+        sheet['G20'].value = State
+        sheet['H20'].value = Zipcode
+        sheet['E8'].value = Manager
+        sheet['E10'].value = Supervisor
+        sheet['E12'].value = Coordinator
+        sheet['B20'].value = Customer
+        sheet['C20'].value = CustPhone
+        sheet['E13'].value = Comments
+        sheet['B38'].value = Escalation
+        #Save ROI File as new
+        wb.save(ProjectName + '_ROI.xlsm')
+
+        #Open WOV File
+        wb2 = openpyxl.load_workbook('WOV_FORM.xlsm', keep_vba=True)
+        #Select sheet and assign values
+        sheet2 = wb2['Project Information']
+        sheet2['D4'].value = ProjectName
+        sheet2['D5'].value = Address + ' ' + City + ',' + ' ' + State + ' ' + Zipcode
+        sheet2['D7'].value = Comments
+        sheet2['D8'].value = PID
+        sheet2['D6'].value = MapNumber
+        sheet2['D9'].value = Date
+        sheet2['G9'].value = Coordinator
+        sheet2['E23'].value = Passings
+        sheet2['M23'].value = Passings
+        sheet2['E32'].value = AerialFt
+        sheet2['I26'].value = UgFt
+        sheet2['E26'].value = AerialFt
+        sheet2['E33'].value = UgFt
+        #Save WOV File as new
+        wb2.save(ProjectName + '_WOV_FORM.xlsm')
+        
+        
+         
+            
+if __name__ == "__main__":
+    
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Dialog()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())
